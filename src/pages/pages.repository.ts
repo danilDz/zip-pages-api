@@ -24,4 +24,8 @@ export class PagesRepository {
       .take(getPages.limit)
       .getMany();
   }
+
+  async getPagesCount(): Promise<number> {
+    return await this.pageEntityRepository.count();
+  }
 }

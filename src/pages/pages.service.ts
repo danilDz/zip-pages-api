@@ -22,6 +22,8 @@ export class PagesService {
   }
 
   async getManyPages(getPages: GetManyPagesDto) {
-    return await this.pagesRepository.getManyPages(getPages);
+    const pagesList = await this.pagesRepository.getManyPages(getPages);
+    const count = await this.pagesRepository.getPagesCount();
+    return { pagesList, count };
   }
 }
