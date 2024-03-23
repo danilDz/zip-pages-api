@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class GetManyPagesDto {
   @Transform(({ value }) => parseInt(value))
@@ -9,4 +9,10 @@ export class GetManyPagesDto {
   @Transform(({ value }) => parseInt(value))
   @IsNumber()
   limit: number;
+
+  @IsString()
+  sortField: 'title' | 'size';
+
+  @IsString()
+  sortOrder: 'ASC' | 'DESC';
 }

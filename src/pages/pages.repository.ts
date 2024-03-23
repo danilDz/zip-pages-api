@@ -20,6 +20,7 @@ export class PagesRepository {
   async getManyPages(getPages: GetManyPagesDto): Promise<Page[]> {
     return await this.pageEntityRepository
       .createQueryBuilder()
+      .orderBy(getPages.sortField, getPages.sortOrder)
       .skip(getPages.offset)
       .take(getPages.limit)
       .getMany();
